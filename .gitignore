@@ -128,3 +128,4 @@ test.jpg
 .env
 .dockerignore
 .env.local%
+wakarimiSQL/README.md
