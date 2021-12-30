@@ -1,0 +1,30 @@
+2021/12/30(木)
+⭕ or ❌
+
+問１
+解答： select height, name from members order by height desc  limit 3;
+❌答え： select height, name from members where gender = 'M' order by height desc  limit 3;
+
+問2
+解答： select * from members order by height limit 1;
+⭕答え：
+解答： select * from members order by height limit 1 offset 1;
+⭕答え：
+
+問3
+解答： select * from members order by gender = 'F', id;
+⭕ 答え： select * from members order by gender desc, id;
+
+問4
+解答： select * from members order by height desc limit 10;
+⭕答え：select * from members order by height desc limit 10 offset 0;
+解答： select * from members order by height desc limit 10 offset 10;
+❌答え： select * from members order by height desc, id limit 10 offset 10;
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
