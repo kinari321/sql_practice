@@ -1,0 +1,40 @@
+2021/12/30(木)
+⭕ or ❌
+
+問１
+解答：
+  select gender, count(*), to_char(avg(height), '999.99')
+  from members group by gender;
+⭕ 答え：
+
+問2
+解答：
+  select gender, max(height), min(height), max(height) - min(height)
+  from members group by gender;
+❌ 答え：
+  select gender, max(height), min(height), max(height) - min(height)
+  from members group by gender order by gender desc;
+
+問3
+解答：
+  アリ： select count(*) from members group by gender;
+  ナシ： select count(gender='M') from members where gender = 'M';
+❌ 答え：
+  アリ： select gender, count(*) from members group by gender having gender = 'M';
+  ナシ： select count(*) from members where gender = 'M';
+  理由： 違いはgroup byを使うと遅い。その理由はgroup by 女子も集計してから男子を出力するから。
+
+問4
+解答：
+❌答え：
+  集約関数の結果を where 句で使えない理由は、集約関数を使うには
+  group by 句によるグループ化が必要なのに、where 句はグループ化の前に実行されるから です。
+  つまり、集約関数は where 句のあとでないと実行できないからです。
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
