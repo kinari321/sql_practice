@@ -1,0 +1,40 @@
+2021/12/31(木)
+⭕ or ❌
+
+問１
+解答：
+
+❌ 答え：select id, name || 'さん', height || 'cm' from members where gender = 'F' order by id;
+
+問2
+解答：
+   select * from members where name in ('エレン', 'ミカサ', 'アルミン') order by id;
+⭕ 答え：
+
+問3
+解答：
+  select name, height from members where height < 181 and height > 169 order by id;
+⭕ 答え：
+
+
+問4
+解答：
+  select name from members where name like '%ン' order by name desc;
+❌ 答え：
+  select name from members where name like '%ン%' order by name desc;
+
+問5
+解答：
+ select name from members where 4 = length(name) order by name;
+❌ 答え：
+
+問6
+解答：
+  select * from characters where movie_id is not null order by id;
+⭕答え：
+
+問7
+解答：
+  select * from characters where movie_id is not null order by id;
+❌ 答え：
+  select id, coalesce(movie_id || '', '未登録') as movie_id, name, gender from characters order by id;
