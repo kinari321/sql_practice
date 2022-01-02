@@ -1,0 +1,38 @@
+2022/1/2(日)
+⭕ or ❌
+
+問１
+解答：
+  select m.* from movies m left join characters c using (movie_id)
+  where c.id is null order by m.movie_id;
+⭕ 答え：
+
+問2
+解答：
+  select c.id, c.name, c.gender  from characters c full join movies m
+   using (movie_id) where c.movie_id is null order by id;
+❌ 答え：
+  select c.id, c.name, c.gender from characters c
+  where c.movie_id is null order by c.id;
+
+問3
+解答：
+❌ 答え：
+  select m.movie_id, m.title, count(c.id) from movies m left join
+  characters c on m.movie_id = c.movie_id group by m.movie_id order by m.movie_id;
+
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
