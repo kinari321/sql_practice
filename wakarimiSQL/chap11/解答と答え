@@ -1,0 +1,49 @@
+2022/1/2(日)
+⭕ or ❌
+
+問１
+解答：
+❌ 答え：
+   select e.id as id, e.name, c.id as comp_id, c.name as company
+   , d.id as dept_id, d.name as department
+   from companies as c
+   join departments d on c.id = d.company_id
+   join employees e on d.id = e.dept_id
+   order by e.id
+   ;
+
+問2
+解答：
+   select b.id book_id, b.title, w.author_id, a.name, w.role
+   from books b
+   join writings w on w.book_id = b.id
+   join authors a on w.author_id = a.id
+   ;
+❌ 答え：
+   select b.id book_id, b.title, w.author_id, a.name, w.role
+   from books b
+   join writings w on w.book_id = b.id
+   join authors a on w.author_id = a.id
+   order by b.id, w.role
+   ;
+
+問3
+解答：
+
+答え：
+
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
