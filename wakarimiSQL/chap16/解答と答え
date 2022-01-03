@@ -1,0 +1,59 @@
+2022/1/3(月)
+⭕ or ❌
+
+問１
+解答：
+答え：
+▼ (A) 相関でないサブクエリを使う方法
+ select t.student_id, t.score from test_scores t
+ where t.subject = '算数' and t.student_id in
+ (select s.id from students s where s.gender = 'F');
+
+▼ (B) 相関サブクエリを where 句で使う方法
+   select t.student_id, t.score
+   from test_scores t
+   where t.subject = '算数'
+   and 'F' = (select gender from students s
+   where s.id = t.student_id);
+
+▼ (C) 相関サブクエリを select 句で使う方法
+   select s.id as student_id
+   , (select t.score from test_scores t
+      where t.student_id = s.id
+      and t.subject = '算数') as score
+   from students s
+   where s.gender = 'F'
+   order by s.id;
+
+▼ (D) サブクエリを使わずテーブル結合する方法
+   select t.student_id, t.score, s.name
+   from test_scores t
+   join students s on t.student_id = s.id
+   where t.subject = '算数'
+   and s.gender = 'F'
+   order by t.student_id;
+
+
+問2
+解答：
+答え：
+
+問3
+解答：
+答え：
+
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
