@@ -1,0 +1,74 @@
+2022/1/3(月)
+⭕ or ❌
+
+問１
+解答：
+   select gender, count(*) from members group by gender;
+
+   select
+   sum(case gender
+   when 'M' then 1
+   else 0
+   end) as "M",
+   sum(case gender
+   when 'F' then 1
+   else 0
+   end) as "F"
+   from members;
+答え：
+⭕
+⭕
+
+問2
+解答：
+
+答え：
+❌
+   select case
+     when height < 160 then '160cm未満'
+     when height >= 170 then '170cm以上'
+     else '160~170cm' end as category
+   , count(*) as count
+   from members group by category;
+
+❌
+   select
+      sum(case when height < 160 then 1 else 0 end) as "160cm未満"
+   ,  sum(case when 160 <= height and height < 170 then 1 else 0 end) as "160~170cm"
+   ,  sum(case when height >= 170 then 1 else 0 end) as "170cm以上"
+   from members;
+
+問3
+解答：
+答え：
+❌
+   select case
+      when height < 160 then '160cm未満'
+      when height < 170 then '160~170cm'
+      when 170 <= height then '170cm以上'
+      end  as category
+      , sum(case gender when 'M' then 1 else 0 end) as "M"
+      , sum(case gender when 'F' then 1 else 0 end) as "F"
+       from members group by category order by category;
+
+❌
+   select gender
+      , sum (case when height < 160 then 1 else 0 end) as "160cm未満"
+      , sum(case when 160 <= height and height < 170 then 1 else 0 end) as "160~170cm"
+      , sum(case when height >= 170 then 1 else 0 end) as "170cm以上"
+   from members group by gender order by gender desc;
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
