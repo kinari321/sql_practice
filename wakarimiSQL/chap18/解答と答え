@@ -1,0 +1,53 @@
+2022/1/9(日)
+⭕ or ❌
+
+問１
+解答：
+答え：
+   select *,
+   to_char(avg(m.height) over part_gender, '999.99') as avg,
+   to_char(m.height - avg(m.height) over part_gender, '999.99') as diff
+   from members m
+   window part_gender as (partition by m.gender)
+   order by m.gender desc, m.id;
+
+問2
+解答：
+答え：
+   select t.*
+   from (
+      select m.*,
+      rank() over (order by m.height desc) as rank
+      from members m
+   ) t
+  where t.rank <= 2
+  order by t.rank, t.gender desc, t.id;
+
+  select t.*
+   from (
+      select m.*,
+      rank() over (partition by m.gender order by m.height desc) as rank
+      from members m
+   ) t
+  where t.rank <= 2
+  order by t.rank, t.gender desc, t.id;
+
+問3
+解答：
+答え：
+
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
