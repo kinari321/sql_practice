@@ -1,0 +1,75 @@
+2022/1/15(土)
+⭕ or ❌
+
+問１
+解答：
+  select si.id item_id, si.name product_name, sp.price, sp.start_date
+  from sales_items si join sales_prices sp on si.id = sp.item_id
+  order by start_date desc;
+
+答え：
+  select i.id as item_id
+    , i.name as product_name
+    , r.price  as price
+    , r.start_date as start_date
+  from (
+    select item_id, max(start_date) as start_date
+    from sales_prices
+    group by item_id
+  ) as t
+    join sales_prices r using(item_id, start_date)
+    join sales_items i on i.id = t.item_id
+  order by i.id;
+
+問2
+解答：
+  select i.id as item_id
+    , i.name as product_name
+    , r.price  as price
+    , r.start_date as start_date
+  order by i.id;
+
+答え：
+  select i.id as item_id
+    , i.name as product_name
+    , r.price  as price
+    , r.start_date as start_date
+  from sales_items i
+    join sales_prices r on r.item_id = i.id
+  where (r.item_id, r.start_date) in
+    (select item_id, max(start_date) as start_date
+    from sales_prices group by item_id)
+  order by i.id;
+
+問3
+解答：
+答え：
+  with t(item_id, start_date) as(
+      select item_id, max(start_date)
+      from sales_prices
+      group by item_id
+  )
+  select i.id as item_id
+    , i.name as product_name
+    , r.price  as price
+    , r.start_date as start_date
+  from sales_items i
+    join sales_prices r on r.item_id = id
+  where(r.item_id, r.start_date) in (select t.* from t)
+  order by i.id;
+
+問4
+解答：
+答え：
+
+問5
+解答：
+答え：
+
+問6
+解答：
+答え：
+
+問7
+解答：
+答え：
